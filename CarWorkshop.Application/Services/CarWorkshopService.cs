@@ -12,6 +12,7 @@ namespace CarWorkshop.Application.Services
         public async Task Create(Domain.Entities.CarWorkshop carWorkshop)
         {
             carWorkshop.EncodeName();
+
             await _carWorkshopRepository.Create(carWorkshop);
         }
     }
