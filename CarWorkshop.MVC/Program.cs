@@ -3,8 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using CarWorkshop.Infrastructure.Extensions;
 using CarWorkshop.Infrastructure.Seeders;
 using CarWorkshop.Application.Extensions;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var culture = new CultureInfo("en-GB");
+CultureInfo.DefaultThreadCurrentCulture = culture;
+CultureInfo.DefaultThreadCurrentUICulture = culture;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

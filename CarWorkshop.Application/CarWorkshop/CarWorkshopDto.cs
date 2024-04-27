@@ -10,14 +10,9 @@ namespace CarWorkshop.Application.CarWorkshop
 {
     public class CarWorkshopDto
     {
-        [Required]
-        [StringLength(20, MinimumLength = 2, ErrorMessage = "Name for workshop must by bettwen 2-20 letters")]
         public string Name { get; set; } = default!;
-        [Required(ErrorMessage = "Please enter a description")]
         public string? Description { get; set; }
         public string? About { get; set; }
-        [StringLength(12, MinimumLength = 8)]
-
         public string? PhoneNumber { get; set; }
         public string? Street { get; set; }
         public string? City { get; set; }
