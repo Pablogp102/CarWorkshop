@@ -4,16 +4,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using CarWorkshop.Domain.Inferfaces;
 
 using FluentValidation;
 
-namespace CarWorkshop.Application.CarWorkshop
+namespace CarWorkshop.Application.CarWorkshop.Commands.CreateCarWorkshop
 {
-    public class CarWorkshopDtoValidator : AbstractValidator<CarWorkshopDto>
+    public class CreateCarWorkshopCommandValidator : AbstractValidator<CreateCarWorkshopCommand>
     {
-        public CarWorkshopDtoValidator(ICarWorkshopRepository repository)
+        public CreateCarWorkshopCommandValidator(ICarWorkshopRepository repository)
         {
             RuleFor(c => c.Name)
                 .NotEmpty()
@@ -35,8 +34,8 @@ namespace CarWorkshop.Application.CarWorkshop
             .Matches(@"^\+?[0-9]+$").WithMessage("Phone number must contain only digits.")
             .MinimumLength(8)
             .MaximumLength(12);
-         
-                
+
+
         }
     }
 }
