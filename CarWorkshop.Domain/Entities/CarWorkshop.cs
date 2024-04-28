@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Identity;
+
 namespace CarWorkshop.Domain.Entities
 {
     public class CarWorkshop
@@ -13,12 +15,10 @@ namespace CarWorkshop.Domain.Entities
         public string? Description { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public CarWorkshopContactDetails ContactDetails { get; set; } = default!;
-
         public string? About { get; set; }
-
-
+        public string? CreatedById { get; set; }
+        public IdentityUser? CreatedBy { get; set; }
         public string EncodedName { get; private set; } = default!;
-
         public void EncodeName() => EncodedName = Name.ToLower().Replace(" ", "-");
     }
 }

@@ -1,4 +1,5 @@
-﻿using CarWorkshop.Domain.Inferfaces;
+﻿using CarWorkshop.Application.ApplicationUser;
+using CarWorkshop.Domain.Inferfaces;
 using CarWorkshop.Infrastructure.Persistence;
 using CarWorkshop.Infrastructure.Repositories;
 using CarWorkshop.Infrastructure.Seeders;
@@ -8,12 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CarWorkshop.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtension
@@ -22,7 +17,8 @@ namespace CarWorkshop.Infrastructure.Extensions
         {
             services.AddDbContext<CarWorkshopDbContext>(options => options.UseSqlServer(
                 configuration.GetConnectionString("CarWorkshop")));
-            services.AddDefaultIdentity<IdentityUser>()
+
+            services.AddDefaultIdentity<IdentityUser>(options => { options.Stores.MaxLengthForKeys = 450; })
                 .AddEntityFrameworkStores<CarWorkshopDbContext>();
 
             services.AddScoped<CarWorkshopSeeder>();

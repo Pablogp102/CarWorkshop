@@ -17,6 +17,10 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult NoAccess()
+    {
+        return View();
+    }
 
     public IActionResult About()
     {
@@ -49,6 +53,7 @@ public class HomeController : Controller
 
         return View(model);
     }
+   
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
