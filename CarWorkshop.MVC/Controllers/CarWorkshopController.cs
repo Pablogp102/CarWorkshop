@@ -39,6 +39,7 @@ namespace CarWorkshop.MVC.Controllers
         }
 
         [Route("CarWorkshop/{encodedName}/Edit")]
+
         public async Task<IActionResult> Edit(string encodedName)
         {
             var dto = await _mediator.Send(new GetCarWorkshopByEncodedNameQuery(encodedName));
@@ -63,7 +64,7 @@ namespace CarWorkshop.MVC.Controllers
             await _mediator.Send(command);
             return RedirectToAction(nameof(Index));
         }
-        [Authorize]
+        [Authorize(Roles = "Owner")]
         public IActionResult Create()
         {
 
@@ -71,7 +72,7 @@ namespace CarWorkshop.MVC.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles ="Owner")]
         public async Task<IActionResult> Create(CreateCarWorkshopCommand command)
         {
             if(!ModelState.IsValid)
